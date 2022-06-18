@@ -12,7 +12,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.widget.SearchView
 import androidx.core.app.TaskStackBuilder
 import androidx.recyclerview.widget.GridLayoutManager
@@ -43,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         getUserGithub()
+        setupServices()
 
     }
 
@@ -94,11 +94,16 @@ class MainActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<ArrayList<GithubResponseItem>>, t: Throwable) {
                 showLoading(false)
-                Log.e(TAG, "onFailure: ${t.message}")
+                val errorMessage = t.message
+                Toast.makeText(applicationContext, errorMessage, Toast.LENGTH_SHORT).show()
             }
 
 
         })
+    }
+
+    private fun setupServices() {
+        WifiService.instance.initializeWithApplicationContext(this)
     }
 
     private fun SearchUserGithub(username:String)
@@ -123,7 +128,6 @@ class MainActivity : AppCompatActivity() {
                     if (responseBody != null) {
                         list.clear()
                         list = response.body()?.items as ArrayList<GithubResponseItem>
-                        Log.d(TAG, "onResponse: "+list)
                         showRecyclerList()
 
                     }
@@ -135,7 +139,10 @@ class MainActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<SearchUserGithubResponse>, t: Throwable) {
                 showLoading(false)
-                Log.e(TAG, "onFailure: ${t.message}")
+
+                val errorMessage = t.message
+
+                Toast.makeText(applicationContext, errorMessage, Toast.LENGTH_SHORT).show()
             }
 
 

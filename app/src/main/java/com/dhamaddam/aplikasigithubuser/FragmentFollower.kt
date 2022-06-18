@@ -62,7 +62,8 @@ class FragmentFollower : Fragment() {
 
         listFollowerRC.setFollowerData(followerItems)
         when (followerItems.size) {
-            0 -> tv_no_follower.visibility = View.VISIBLE
+            0 -> {tv_no_follower.visibility = View.VISIBLE
+                tv_no_follower.text = "Tidak Ada Follower"}
             else -> tv_no_follower.visibility = View.GONE
         }
     }

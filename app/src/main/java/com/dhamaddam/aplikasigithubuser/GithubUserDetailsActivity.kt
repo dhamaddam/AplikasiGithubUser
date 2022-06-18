@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.viewpager2.widget.ViewPager2
 
@@ -46,6 +47,7 @@ class GithubUserDetailsActivity : AppCompatActivity() {
         sectionsPagerAdapter = SectionsPagerAdapter(this)
         sectionsPagerAdapter.username = username
 
+        setupServices()
 
         val viewPager: ViewPager2 = binding.viewPager
         viewPager.adapter = sectionsPagerAdapter
@@ -64,6 +66,9 @@ class GithubUserDetailsActivity : AppCompatActivity() {
         return true
     }
 
+    private fun setupServices() {
+        WifiService.instance.initializeWithApplicationContext(this)
+    }
 
     private fun DetailsUserGithub(username:String)
     {
@@ -96,6 +101,8 @@ class GithubUserDetailsActivity : AppCompatActivity() {
             override fun onFailure(call: Call<DetailsItem>, t: Throwable) {
                 showLoading(false)
                 Log.e(ContentValues.TAG, "onFailure: ${t.message}")
+                val errorMessage = t.message
+                Toast.makeText(applicationContext, errorMessage, Toast.LENGTH_SHORT).show()
             }
 
 
