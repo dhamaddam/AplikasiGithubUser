@@ -5,8 +5,15 @@
     <string name="githuber">Nama Pengguna</string>
     <string name="description">Githuber</string>
     <string name="app_name">Aplikasi Pengguna Github</string>
+    <string name="tab_text_1">Follower</string>
+    <string name="tab_text_2">Following</string>
+    <string name="tab_text_3">Details</string>
+    <string name="search">Cari Pengguna</string>
 
+    <string name="empty_follower">Tidak Ada Follower</string>
+    <string name="empty_following">Tidak Ada Followng</string>
 
+    <string name="content_tab_text">This is Tab %1$d</string>
 
     <string-array name="username">
         <item>JakeWharton</item>
@@ -111,6 +118,8 @@
         <item>@drawable/user9</item>
         <item>@drawable/user10</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
 

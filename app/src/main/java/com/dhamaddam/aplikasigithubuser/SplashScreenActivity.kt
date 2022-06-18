@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 
 class SplashScreenActivity: AppCompatActivity() {
 
+    var DELAY = 3000L ;
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -17,6 +19,6 @@ class SplashScreenActivity: AppCompatActivity() {
             startActivity(Intent(applicationContext, MainActivity::class.java))
             finish()
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-        }, 3000L)
+        }, DELAY)
     }
 }

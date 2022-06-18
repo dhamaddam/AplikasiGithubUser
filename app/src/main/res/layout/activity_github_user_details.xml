@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="Nama User"
+            tools:text="Nama User"
             android:textColor="@android:color/darker_gray"
             android:textSize="14sp"
             android:textStyle="bold"
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="Following 22"
+            tools:text=" Following 22"
             android:textColor="@android:color/darker_gray"
             android:textSize="14sp"
             android:textStyle="bold"
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="Follower 21"
+            tools:text="Follower 21"
             android:textColor="@android:color/darker_gray"
             android:textSize="14sp"
             android:textStyle="bold"
@@ -64,9 +64,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="repository"
+            tools:text="repository"
             android:textColor="@android:color/darker_gray"
-            android:textSize="20sp"
+            android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/tv_follower" />
 
@@ -76,9 +76,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="company"
+            tools:text="company"
             android:textColor="@android:color/darker_gray"
-            android:textSize="20sp"
+            android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/tv_repository" />
 
@@ -88,12 +88,36 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="location"
+            tools:text="location"
             android:textColor="@android:color/darker_gray"
-            android:textSize="20sp"
+            android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/tv_company" />
 
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_follower_following"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintTop_toBottomOf="@id/tv_location"
+            app:tabTextColor="@android:color/white"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@id/tab_follower_following" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

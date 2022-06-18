@@ -5,8 +5,12 @@
       <map>
         <entry key="app/src/main/res/layout/activity_github_user_details.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/fragment_follower.xml" value="0.15052083333333333" />
+        <entry key="app/src/main/res/layout/fragment_following.xml" value="0.15052083333333333" />
         <entry key="app/src/main/res/layout/item_row_user.xml" value="0.15070921985815602" />
         <entry key="app/src/main/res/layout/splashscree.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/splashscreen.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/option_menu.xml" value="0.1" />
       </map>
     </option>
   </component>
