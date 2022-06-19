@@ -26,7 +26,7 @@ class ListUserAdapter (private val listUser: ArrayList<GithubResponseItem>): Rec
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val (username, type, avatar , id) = listUser[position]
+        val (username, type, avatar) = listUser[position]
         Glide.with(holder.itemView.getContext()).load(avatar).into(holder.binding.imgItemPhoto)
         holder.binding.tvItemName.text = username
         holder.binding.tvItemDescription.text = type

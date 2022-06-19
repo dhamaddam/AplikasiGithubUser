@@ -69,7 +69,7 @@ class GithubUserDetailsActivity : AppCompatActivity() {
     {
         showLoading(true)
 
-        val client = ApiConfig.getApiService().getDetailsUserGithub(username)
+        val client = ApiConfig.getApiService().getDetailsUserGithub("token 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",username)
 
         client.enqueue( object : Callback<DetailsItem> {
             override fun onResponse(
@@ -88,6 +88,15 @@ class GithubUserDetailsActivity : AppCompatActivity() {
 
                     }
                 } else {
+                    var statusCode = response.code()
+                    val errorMessage = when (response.code()) {
+                        401 -> "$statusCode : Bad Request"
+                        403 -> "$statusCode : Forbidden requests get a higher rate limit"
+                        404 -> "$statusCode : Not Found"
+                        else -> "$statusCode : ${response.message()}"
+                    }
+                    Toast.makeText(applicationContext,"Error" + errorMessage, Toast.LENGTH_LONG ).show()
+
                     Log.e(ContentValues.TAG, "onFailure: ${response.message()}")
                 }
 
@@ -106,7 +115,7 @@ class GithubUserDetailsActivity : AppCompatActivity() {
 
 
     private fun setUserDetailsData(Items: DetailsItem) {
-        binding?.apply {
+        binding.apply {
             tvNameReceived.text = "Name : " + Items.name
             tvRepository.text = "Repository : " +Items.publicRepos
             tvFollowing.text = "Following : " +Items.following

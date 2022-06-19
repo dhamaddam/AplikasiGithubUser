@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
     {
         showLoading(true)
 
-        val client = ApiConfig.getApiService().getAllUser()
+        val client = ApiConfig.getApiService().getAllUser("token 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")
 
         client.enqueue( object : Callback <ArrayList<GithubResponseItem>> {
             override fun onResponse(
@@ -81,6 +81,14 @@ class MainActivity : AppCompatActivity() {
 
                     }
                 } else {
+                    var statusCode = response.code()
+                    val errorMessage = when (response.code()) {
+                        401 -> "$statusCode : Bad Request"
+                        403 -> "$statusCode : Forbidden requests get a higher rate limit"
+                        404 -> "$statusCode : Not Found"
+                        else -> "$statusCode : ${response.message()}"
+                    }
+                    Toast.makeText(applicationContext,"Error" + errorMessage, Toast.LENGTH_LONG ).show()
                     Log.e(TAG, "onFailure: ${response.message()}")
                 }
 
@@ -104,7 +112,7 @@ class MainActivity : AppCompatActivity() {
     {
         showLoading(true)
 
-        val client = ApiConfig.getApiService().searchAllUser(username)
+        val client = ApiConfig.getApiService().searchAllUser("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",username)
 
         client.enqueue( object : Callback <SearchUserGithubResponse> {
             override fun onResponse(
@@ -177,7 +185,7 @@ class MainActivity : AppCompatActivity() {
         inflater.inflate(R.menu.option_menu, menu)
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
         var searchView = menu.findItem(R.id.search).actionView as SearchView
-        var menuSearch = menu?.findItem(R.id.search)
+        var menuSearch = menu.findItem(R.id.search)
         searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
         searchView.queryHint = resources.getString(R.string.search)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {

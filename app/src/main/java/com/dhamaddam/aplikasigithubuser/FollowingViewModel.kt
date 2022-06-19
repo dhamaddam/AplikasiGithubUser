@@ -3,6 +3,7 @@ package com.dhamaddam.aplikasigithubuser
 import android.content.ContentValues
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,7 +16,7 @@ class FollowingViewModel: ViewModel()  {
 
     fun setFollowing(username: String, context: Context) {
 
-        val client = ApiConfig.getApiService().getFollowing(username)
+        val client = ApiConfig.getApiService().getFollowing("token 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",username)
 
             client.enqueue( object : Callback<ArrayList<GithubResponseItem>> {
                 override fun onResponse(
@@ -32,6 +33,15 @@ class FollowingViewModel: ViewModel()  {
                             listFollowing.postValue(listItems)
                         }
                     } else {
+                        var statusCode = response.code()
+                        val errorMessage = when (response.code()) {
+                            401 -> "$statusCode : Bad Request"
+                            403 -> "$statusCode : Forbidden requests get a higher rate limit"
+                            404 -> "$statusCode : Not Found"
+                            else -> "$statusCode : ${response.message()}"
+                        }
+                        Toast.makeText(context,"Error" + errorMessage, Toast.LENGTH_LONG ).show()
+
                         Log.e(ContentValues.TAG, "onFailure: ${response.message()}")
                     }
 
