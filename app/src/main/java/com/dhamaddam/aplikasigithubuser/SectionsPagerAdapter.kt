@@ -17,7 +17,7 @@ class SectionsPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapter(a
 
     override fun createFragment(position: Int): Fragment {
 
-        var fragment: Fragment? = null
+        var fragment: Fragment
 
         if(position == 0){
              fragment = FragmentFollower()
@@ -35,7 +35,7 @@ class SectionsPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapter(a
         }
 
 
-        return fragment as Fragment
+        return fragment
 
     }
 

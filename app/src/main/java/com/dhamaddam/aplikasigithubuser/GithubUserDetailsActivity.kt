@@ -1,8 +1,6 @@
 package com.dhamaddam.aplikasigithubuser
 
 import android.content.ContentValues
-import android.content.ContentValues.TAG
-import android.content.Context
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,7 +9,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.viewpager2.widget.ViewPager2
-
 import com.bumptech.glide.Glide
 import com.dhamaddam.aplikasigithubuser.databinding.ActivityGithubUserDetailsBinding
 import com.google.android.material.tabs.TabLayout
@@ -23,8 +20,6 @@ import retrofit2.Response
 class GithubUserDetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityGithubUserDetailsBinding
-    private var listFollower: ArrayList<GithubResponseItem> = arrayListOf()
-    private var listFollowing: ArrayList<GithubResponseItem> = arrayListOf()
 
     private lateinit var sectionsPagerAdapter: SectionsPagerAdapter
 

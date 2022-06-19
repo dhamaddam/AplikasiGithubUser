@@ -46,12 +46,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    override fun onResume() {
-        super.onResume()
-        getUserGithub()
-    }
-
-
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true

@@ -11,19 +11,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.dhamaddam.aplikasigithubuser.databinding.FragmentFollowerBinding
 import com.dhamaddam.aplikasigithubuser.databinding.FragmentFollowingBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [FragmentFollowing.newInstance] factory method to
- * create an instance of this fragment.
- */
 class FragmentFollowing : Fragment() {
 
     lateinit var rVFollowing: RecyclerView
@@ -38,7 +28,7 @@ class FragmentFollowing : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            username = it.getString(FragmentFollower.USERNAME)
+            username = it.getString(USERNAME)
         }
     }
 
@@ -96,6 +86,5 @@ class FragmentFollowing : Fragment() {
 
     companion object {
         const val USERNAME = "username"
-        const val ARG_SECTION_NUMBER = "section_number"
     }
 }
