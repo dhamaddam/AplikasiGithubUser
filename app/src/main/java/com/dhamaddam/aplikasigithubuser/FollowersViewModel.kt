@@ -16,7 +16,7 @@ class FollowersViewModel: ViewModel()  {
 
     fun setFollower(username: String, context: Context) {
 
-        val client = ApiConfig.getApiService().getFollower("token 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",username)
+        val client = ApiConfig.getApiService().getFollower("token ${BuildConfig.TOKEN}",username)
 
             client.enqueue( object : Callback<ArrayList<GithubResponseItem>> {
                 override fun onResponse(

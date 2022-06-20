@@ -16,7 +16,7 @@ class FollowingViewModel: ViewModel()  {
 
     fun setFollowing(username: String, context: Context) {
 
-        val client = ApiConfig.getApiService().getFollowing("token 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",username)
+        val client = ApiConfig.getApiService().getFollowing("token ${BuildConfig.TOKEN}",username)
 
             client.enqueue( object : Callback<ArrayList<GithubResponseItem>> {
                 override fun onResponse(

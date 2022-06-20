@@ -33,7 +33,7 @@ class FragmentFollower : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentFollowerBinding.inflate(layoutInflater)
         progressBarFollower = binding.progressBar2
         rVFollower = binding.recyclerViewFollower

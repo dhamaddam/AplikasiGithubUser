@@ -69,7 +69,7 @@ class GithubUserDetailsActivity : AppCompatActivity() {
     {
         showLoading(true)
 
-        val client = ApiConfig.getApiService().getDetailsUserGithub("token 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",username)
+        val client = ApiConfig.getApiService().getDetailsUserGithub("token ${BuildConfig.TOKEN}",username)
 
         client.enqueue( object : Callback<DetailsItem> {
             override fun onResponse(
@@ -95,7 +95,7 @@ class GithubUserDetailsActivity : AppCompatActivity() {
                         404 -> "$statusCode : Not Found"
                         else -> "$statusCode : ${response.message()}"
                     }
-                    Toast.makeText(applicationContext,"Error" + errorMessage, Toast.LENGTH_LONG ).show()
+                    Toast.makeText(applicationContext, "Error$errorMessage", Toast.LENGTH_LONG ).show()
 
                     Log.e(ContentValues.TAG, "onFailure: ${response.message()}")
                 }

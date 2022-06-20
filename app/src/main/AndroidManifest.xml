@@ -24,6 +24,7 @@
         </activity>
         <activity android:name=".GithubUserDetailsActivity" />
         <activity android:name=".MainActivity"/>
+        <activity android:name=".UserFavoriteActivity" />
     </application>
 
 </manifest>

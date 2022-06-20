@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
     {
         showLoading(true)
 
-        val client = ApiConfig.getApiService().getAllUser("token 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")
+        val client = ApiConfig.getApiService().getAllUser("token ${BuildConfig.TOKEN}")
 
         client.enqueue( object : Callback <ArrayList<GithubResponseItem>> {
             override fun onResponse(
@@ -112,7 +112,7 @@ class MainActivity : AppCompatActivity() {
     {
         showLoading(true)
 
-        val client = ApiConfig.getApiService().searchAllUser("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",username)
+        val client = ApiConfig.getApiService().searchAllUser("token ${BuildConfig.TOKEN}", username)
 
         client.enqueue( object : Callback <SearchUserGithubResponse> {
             override fun onResponse(
@@ -120,8 +120,6 @@ class MainActivity : AppCompatActivity() {
                 response: Response<SearchUserGithubResponse>
             ) {
                 showLoading(false)
-
-                Log.d(TAG, "onResponse: "+list)
 
                 if (response.isSuccessful) {
 
@@ -215,6 +213,18 @@ class MainActivity : AppCompatActivity() {
                 return true // Return true to expand action view
             }
         }
+
+        var FavoriteButton = menu.findItem(R.id.action_favorite)
+        FavoriteButton.setOnMenuItemClickListener ( object : MenuItem.OnMenuItemClickListener  {
+            override fun onMenuItemClick(item: MenuItem?): Boolean {
+
+                val startGithubUserDetails = Intent(applicationContext, UserFavoriteActivity::class.java)
+                startActivity(startGithubUserDetails)
+
+                return true
+            }
+
+        } )
 
         menuSearch?.setOnActionExpandListener(expandListener)
 

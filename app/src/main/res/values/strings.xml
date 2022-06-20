@@ -9,6 +9,8 @@
     <string name="tab_text_2">Following</string>
     <string name="tab_text_3">Details</string>
     <string name="search">Cari Pengguna</string>
+    <string name="favorite_item">Pengguna Favorite</string>
+
 
     <string name="empty_follower">Tidak Ada Follower</string>
     <string name="empty_following">Tidak Ada Followng</string>
